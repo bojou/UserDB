@@ -1,0 +1,8 @@
+CREATE TABLE users
+(
+    id character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    first_name bytea,
+    last_name bytea,
+    age bytea,
+    CONSTRAINT user_details_pkey PRIMARY KEY (id)
+);
