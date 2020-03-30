@@ -25,26 +25,34 @@ public class User {
 	private String id;
 	
 	@ColumnTransformer(forColumn = "first_name", 
-			read = "pgp_sym_decrypt(first_name::bytea, 'password')",
-			write = "pgp_sym_encrypt(?, 'password')")
+			read = "pgp_sym_decrypt(first_name::bytea, 'AC10G31VX9330XP0')",
+			write = "pgp_sym_encrypt(?, 'AC10G31VX9330XP0')")
 	@Column(name = "first_name", nullable = false)
 	private String firstName;
 	
 	
 	@ColumnTransformer(forColumn = "last_name", 
-			read = "pgp_sym_decrypt(last_name::bytea, 'password')",
-			write = "pgp_sym_encrypt(?, 'password')")
+			read = "pgp_sym_decrypt(last_name::bytea, 'AC10G31VX9330XP0')",
+			write = "pgp_sym_encrypt(?, 'AC10G31VX9330XP0')")
 	@Column(name = "last_name", nullable = false)
 	private String lastName;
 	
+	@ColumnTransformer(forColumn = "age", 
+			read = "pgp_sym_decrypt(age::bytea, 'AC10G31VX9330XP0')",
+			write = "pgp_sym_encrypt(?, 'AC10G31VX9330XP0')")
+	@Column(name = "age", nullable = false)
+	private String age;
+	
+	
+
 	public User() {
 		
 	}
 	
-	public User(String firstName, String lastName) {
+	public User(String firstName, String lastName, String age) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		
+		this.age = age;
 	}
 	
 	
@@ -63,11 +71,18 @@ public class User {
 		this.firstName = firstName;
 	}
 	
-	
 	public String getLastName() {
 		return lastName;
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	
+	public String getAge() {
+		return age;
+	}
+
+	public void setAge(String age) {
+		this.age = age;
 	}
 }

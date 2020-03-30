@@ -45,6 +45,7 @@ public class UserService {
 		
 		user.setFirstName(userDetails.getFirstName());
 		user.setLastName(userDetails.getLastName());
+		user.setAge(userDetails.getAge());
 		final User updatedUser = userRepository.save(user);
 		return ResponseEntity.ok(updatedUser);
 		
@@ -64,10 +65,26 @@ public class UserService {
 		
 	}
 	
-	public ResponseEntity<User> getUserByLastName(String lastName) throws ResourceNotFoundException {
-		User user = userRepository.findUserByLastName(lastName);
-		return ResponseEntity.ok().body(user);
+	public List<User> findUsersByLastName(String lastName) throws ResourceNotFoundException {
+		
+		return userRepository.findUsersByLastName(lastName);
 
+	}
+	
+	public List<User> findUsersByFirstName(String firstName) throws ResourceNotFoundException {
+		
+		return userRepository.findUsersByFirstName(firstName);
+	}
+	
+	public List<User> findUsersByAge(String age){
+		
+		return userRepository.findUsersByAge(age);
+	}
+	
+	public List<User> findUsersByAgeAndLastName(String age, String lastName){
+		
+		return userRepository.findUsersByAgeAndLastName(age, lastName);
+		
 	}
 
 }

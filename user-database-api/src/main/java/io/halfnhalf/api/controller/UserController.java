@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,8 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,17 +38,35 @@ public class UserController {
 		return userService.getUserById(userId);
 	}
 	
-	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<User> getUserByLastName(@RequestParam(value = "lastName") String lastName) 
+	@GetMapping("/lastName/{lastName}")
+	public List<User> findUsersByLastName(@PathVariable(value = "lastName") String lastName) 
 			throws ResourceNotFoundException{
-		return userService.getUserByLastName(lastName);
+		return userService.findUsersByLastName(lastName);
+	}
+	@GetMapping("/firstName/{firstName}")
+	public List<User> findUserByFirstName(@PathVariable(value = "firstName") String firstName) 
+			throws ResourceNotFoundException{
+		
+		return userService.findUsersByFirstName(firstName);
+	}
+	@GetMapping("/age/{age}")
+	public List<User> findUsersByAge(@PathVariable(value = "age") String age){
+		
+		return userService.findUsersByAge(age);
+	}
+	
+	@GetMapping("/lastNameAndAge")
+	public List<User> findUsersByAgeAndLastName(@RequestParam String age, @RequestParam String lastName){
+		
+		return userService.findUsersByAgeAndLastName(age, lastName);
+		
 	}
 
 	@PostMapping("/users")
 	public User createUser(@Valid @RequestBody User user) {
 		return userService.createUser(user);
 	}
-	
+	 
 	@PutMapping("/users/{id}")
 	public ResponseEntity<User> updateUser(@PathVariable(value = "id") String userId,
 			@Valid @RequestBody User userDetails) throws ResourceNotFoundException{
