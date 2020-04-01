@@ -96,5 +96,9 @@ public class UserService {
 		return userRepository.findUsersByFullNameAndAge(age, firstName, lastName);
 	}
 
+	public List<User> findUsersByAgeAndFirstName(String age, String firstName) {
+		return userRepository.findUsersByAgeAndFirstName(age, firstName);
+	}
+
 
 }

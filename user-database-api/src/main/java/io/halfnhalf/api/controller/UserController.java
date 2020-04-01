@@ -32,40 +32,56 @@ public class UserController {
 		return userService.getAllUsers();
 	}
 	
+	//http://localhost:8081/users/{id}
 	@GetMapping("/users/{id}")
 	public ResponseEntity<User> getUserById(@PathVariable(value = "id") String userId) 
 			throws ResourceNotFoundException{
 		return userService.getUserById(userId);
 	}
 	
+	//http://localhost:8081/lastName/{lastName}
 	@GetMapping("/lastName/{lastName}")
 	public List<User> findUsersByLastName(@PathVariable(value = "lastName") String lastName) 
 			throws ResourceNotFoundException{
 		return userService.findUsersByLastName(lastName);
 	}
+	//http://localhost:8081/firstName/{firstName}
 	@GetMapping("/firstName/{firstName}")
 	public List<User> findUserByFirstName(@PathVariable(value = "firstName") String firstName) 
 			throws ResourceNotFoundException{
 		return userService.findUsersByFirstName(firstName);
 	}
 	
-	@GetMapping("/fullName/")
-	public List<User> findUsersByFullName(@RequestParam String firstName, @RequestParam String lastName){
-		return userService.findUsersByFullName(firstName, lastName);
-	}
-	
+	//http://localhost:8081/age/{age}
 	@GetMapping("/age/{age}")
 	public List<User> findUsersByAge(@PathVariable(value = "age") String age){
 		
 		return userService.findUsersByAge(age);
 	}
 	
+	//http://localhost:8081/fullName/?firstName={firstName}&lastName={lastName}
+	@GetMapping("/fullName/")
+	public List<User> findUsersByFullName(@RequestParam String firstName, @RequestParam String lastName){
+		return userService.findUsersByFullName(firstName, lastName);
+	}
+	
+	//http://localhost:8081/firstNameAndAge/?firstName={firstName}&age={age}
+	@GetMapping("/firstNameAndAge/")
+	public List<User> findUsersByAgeAndfirstName(@RequestParam String age, @RequestParam String firstName) {
+
+		return userService.findUsersByAgeAndFirstName(age, firstName);
+
+	}
+	
+	//http://localhost:8081/lastNameAndAge/?lastName={lastName}&age={age}
 	@GetMapping("/lastNameAndAge/")
 	public List<User> findUsersByAgeAndLastName(@RequestParam String age, @RequestParam String lastName){
 		
 		return userService.findUsersByAgeAndLastName(age, lastName);
 		
 	}
+	
+	//http://localhost:8081/fullName/?firstName={firstName}&lastName={lastName}&age={age}
 	@GetMapping("/fullNameAndAge/")
 	public List<User> findUsersByFullNameAndAge(@RequestParam String age, @RequestParam String firstName,
 												@RequestParam String lastName){
