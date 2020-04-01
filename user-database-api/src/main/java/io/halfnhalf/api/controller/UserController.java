@@ -46,20 +46,30 @@ public class UserController {
 	@GetMapping("/firstName/{firstName}")
 	public List<User> findUserByFirstName(@PathVariable(value = "firstName") String firstName) 
 			throws ResourceNotFoundException{
-		
 		return userService.findUsersByFirstName(firstName);
 	}
+	
+	@GetMapping("/fullName/")
+	public List<User> findUsersByFullName(@RequestParam String firstName, @RequestParam String lastName){
+		return userService.findUsersByFullName(firstName, lastName);
+	}
+	
 	@GetMapping("/age/{age}")
 	public List<User> findUsersByAge(@PathVariable(value = "age") String age){
 		
 		return userService.findUsersByAge(age);
 	}
 	
-	@GetMapping("/lastNameAndAge")
+	@GetMapping("/lastNameAndAge/")
 	public List<User> findUsersByAgeAndLastName(@RequestParam String age, @RequestParam String lastName){
 		
 		return userService.findUsersByAgeAndLastName(age, lastName);
 		
+	}
+	@GetMapping("/fullNameAndAge/")
+	public List<User> findUsersByFullNameAndAge(@RequestParam String age, @RequestParam String firstName,
+												@RequestParam String lastName){
+		return userService.findUsersByFullNameAndAge(age, firstName, lastName);
 	}
 
 	@PostMapping("/users")
