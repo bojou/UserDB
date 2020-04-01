@@ -76,6 +76,11 @@ public class UserService {
 		return userRepository.findUsersByFirstName(firstName);
 	}
 	
+	public List<User> findUsersByFullName(String firstName, String lastName){
+		return userRepository.findUsersByFullName(firstName, lastName);
+	}
+
+	
 	public List<User> findUsersByAge(String age){
 		
 		return userRepository.findUsersByAge(age);
@@ -86,5 +91,10 @@ public class UserService {
 		return userRepository.findUsersByAgeAndLastName(age, lastName);
 		
 	}
+	
+	public List<User> findUsersByFullNameAndAge(String age, String firstName, String lastName){
+		return userRepository.findUsersByFullNameAndAge(age, firstName, lastName);
+	}
+
 
 }
