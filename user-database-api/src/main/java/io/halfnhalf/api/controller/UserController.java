@@ -54,7 +54,7 @@ public class UserController {
 	
 	//http://localhost:8081/age/{age}
 	@GetMapping("/age/{age}")
-	public List<User> findUsersByAge(@PathVariable(value = "age") String age){
+	public List<User> findUsersByAge(@PathVariable(value = "age") int age){
 		
 		return userService.findUsersByAge(age);
 	}
@@ -67,7 +67,7 @@ public class UserController {
 	
 	//http://localhost:8081/firstNameAndAge/?firstName={firstName}&age={age}
 	@GetMapping("/firstNameAndAge/")
-	public List<User> findUsersByAgeAndfirstName(@RequestParam String age, @RequestParam String firstName) {
+	public List<User> findUsersByAgeAndfirstName(@RequestParam int age, @RequestParam String firstName) {
 
 		return userService.findUsersByAgeAndFirstName(age, firstName);
 
@@ -75,7 +75,7 @@ public class UserController {
 	
 	//http://localhost:8081/lastNameAndAge/?lastName={lastName}&age={age}
 	@GetMapping("/lastNameAndAge/")
-	public List<User> findUsersByAgeAndLastName(@RequestParam String age, @RequestParam String lastName){
+	public List<User> findUsersByAgeAndLastName(@RequestParam int age, @RequestParam String lastName){
 		
 		return userService.findUsersByAgeAndLastName(age, lastName);
 		
@@ -83,7 +83,7 @@ public class UserController {
 	
 	//http://localhost:8081/fullName/?firstName={firstName}&lastName={lastName}&age={age}
 	@GetMapping("/fullNameAndAge/")
-	public List<User> findUsersByFullNameAndAge(@RequestParam String age, @RequestParam String firstName,
+	public List<User> findUsersByFullNameAndAge(@RequestParam int age, @RequestParam String firstName,
 												@RequestParam String lastName){
 		return userService.findUsersByFullNameAndAge(age, firstName, lastName);
 	}

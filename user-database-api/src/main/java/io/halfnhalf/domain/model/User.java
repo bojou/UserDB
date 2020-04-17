@@ -39,9 +39,9 @@ public class User {
 	
 	@ColumnTransformer(forColumn = "age", 
 			read = "pgp_sym_decrypt(age::bytea, 'AC10G31VX9330XP0')",
-			write = "pgp_sym_encrypt(?, 'AC10G31VX9330XP0')")
+			write = "pgp_sym_encrypt(?::text, 'AC10G31VX9330XP0')")
 	@Column(name = "age", nullable = false)
-	private String age;
+	private int age;
 	
 	
 
@@ -49,7 +49,7 @@ public class User {
 		
 	}
 	
-	public User(String firstName, String lastName, String age) {
+	public User(String firstName, String lastName, int age) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
@@ -78,11 +78,11 @@ public class User {
 		this.lastName = lastName;
 	}
 	
-	public String getAge() {
+	public int getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
 }
