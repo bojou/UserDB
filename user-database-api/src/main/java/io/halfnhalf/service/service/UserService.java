@@ -21,8 +21,6 @@ public class UserService {
 	private UserRepository userRepository;
 
 	public List<User> getAllUsers() {
-		//List <User> users = userRepository.findAll();
-		//List<UserDTO> usersDtos = map(users);
 		return userRepository.findAll();
 	}
 
@@ -81,22 +79,22 @@ public class UserService {
 	}
 
 	
-	public List<User> findUsersByAge(String age){
+	public List<User> findUsersByAge(int age){
 		
 		return userRepository.findUsersByAge(age);
 	}
 	
-	public List<User> findUsersByAgeAndLastName(String age, String lastName){
+	public List<User> findUsersByAgeAndLastName(int age, String lastName){
 		
 		return userRepository.findUsersByAgeAndLastName(age, lastName);
 		
 	}
 	
-	public List<User> findUsersByFullNameAndAge(String age, String firstName, String lastName){
+	public List<User> findUsersByFullNameAndAge(int age, String firstName, String lastName){
 		return userRepository.findUsersByFullNameAndAge(age, firstName, lastName);
 	}
 
-	public List<User> findUsersByAgeAndFirstName(String age, String firstName) {
+	public List<User> findUsersByAgeAndFirstName(int age, String firstName) {
 		return userRepository.findUsersByAgeAndFirstName(age, firstName);
 	}
 

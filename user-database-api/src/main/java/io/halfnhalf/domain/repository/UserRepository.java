@@ -18,19 +18,19 @@ public interface UserRepository extends JpaRepository<User, String> {
 	@Query("SELECT u From User u WHERE u.firstName = ?1")
 	public List<User> findUsersByFirstName(String firstName);
 	
-	@Query("SELECT u From User u WHERE u.age = ?1")
-	public List<User> findUsersByAge(String age);
+	@Query("SELECT u From User u WHERE CAST(u.age as int) >= ?1")
+	public List<User> findUsersByAge(int age);
 	
 	@Query("SELECT u From User u WHERE u.firstName = ?1 AND u.lastName = ?2")
 	public List<User> findUsersByFullName(String firstName, String lastName);
 	
-	@Query("SELECT u From User u WHERE u.age = ?1 AND u.firstName = ?2")
-	public List<User> findUsersByAgeAndFirstName(String age, String firstName);
+	@Query("SELECT u From User u WHERE CAST(u.age as int) >= ?1 AND u.firstName = ?2")
+	public List<User> findUsersByAgeAndFirstName(int age, String firstName);
 	
-	@Query("SELECT u From User u WHERE u.age = ?1 AND u.lastName = ?2")
-	public List<User> findUsersByAgeAndLastName(String age, String lastName);
+	@Query("SELECT u From User u WHERE CAST(u.age as int) >= ?1 AND u.lastName = ?2")
+	public List<User> findUsersByAgeAndLastName(int age, String lastName);
 	
-	@Query("SELECT u From User u WHERE u.age = ?1 AND u.firstName =?2 AND u.lastName = ?3")
-	public List<User> findUsersByFullNameAndAge(String age, String firstName, String lastName);	
+	@Query("SELECT u From User u WHERE CAST(u.age as int) >= ?1 AND u.firstName =?2 AND u.lastName = ?3")
+	public List<User> findUsersByFullNameAndAge(int age, String firstName, String lastName);	
 	
 }
