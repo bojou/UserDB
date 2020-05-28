@@ -1,6 +1,10 @@
 package io.halfnhalf.domain.model;
 
 import javax.persistence.Column;
+
+/**
+ * Class used to model database entries as POJO's
+ */
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,19 +15,24 @@ import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Getter;
 import lombok.Setter;
-
 @Getter
 @Setter
 @Entity
 @Table(name = "users")
 public class User {
 	
+	/**
+	 * ID, only non-encrypyted value-
+	 */
 	@Id
 	@GeneratedValue(generator="system-uuid")
 	@GenericGenerator(name="system-uuid", 
 	strategy = "org.hibernate.id.UUIDGenerator")
 	private String id;
 	
+	/**
+	 * @ColumnTransformer specifies how columns are to be read and written to respectively
+	 */
 	@ColumnTransformer(forColumn = "first_name", 
 			read = "pgp_sym_decrypt(first_name::bytea, 'AC10G31VX9330XP0')",
 			write = "pgp_sym_encrypt(?, 'AC10G31VX9330XP0')")

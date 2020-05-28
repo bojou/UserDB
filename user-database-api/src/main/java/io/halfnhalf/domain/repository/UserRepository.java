@@ -9,6 +9,15 @@ import org.springframework.stereotype.Repository;
 
 import io.halfnhalf.domain.model.User;
 
+/**
+ * UserRepository handles communication with database, conversion of types between 
+ * POJO and database entry and specifies custom SQL-queries that are not supported 
+ * by JPARepository from scratch.
+ * 
+ * @author jonatan berko, julius hopf
+ *
+ */
+
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
 	
