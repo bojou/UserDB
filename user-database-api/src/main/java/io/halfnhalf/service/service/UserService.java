@@ -1,6 +1,8 @@
 package io.halfnhalf.service.service;
 
 import java.util.HashMap;
+
+
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +15,15 @@ import org.springframework.stereotype.Service;
 import io.halfnhalf.domain.model.User;
 import io.halfnhalf.domain.repository.UserRepository;
 import io.halfnhalf.service.exception.ResourceNotFoundException;
+
+/**
+ * 
+ * Handles all business logic used by UserController. Mostly exceptions 
+ * methods specified in UserRepository are being called here.
+ * 
+ * @author jonatan berko, julius hopf
+ *
+ */
 
 @Service
 public class UserService {

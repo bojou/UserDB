@@ -1,6 +1,7 @@
-	package io.halfnhalf.api.controller;
+package io.halfnhalf.api.controller;
 
 import java.util.List;
+
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -20,6 +21,14 @@ import org.springframework.web.bind.annotation.RestController;
 import io.halfnhalf.domain.model.User;
 import io.halfnhalf.service.exception.ResourceNotFoundException;
 import io.halfnhalf.service.service.UserService;
+
+/**
+ * RestController handles all communication between client and database via HTTP-requests.
+ * Uses methods implemented in the UserService class and specifies endpoints where said methods 
+ * can be be reached.
+ * @author jonatan berko, julius hopf
+ *
+ */
 
 @RestController
 public class UserController {
