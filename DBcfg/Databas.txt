@@ -1,3 +1,16 @@
+## CONFIGURATION OF DATABASE ##
+
+1. Create Postgres Database
+
+2. Specify following details found in application.properties to connect to said database:
+
+spring.datasource.url=jdbc:postgresql://localhost:<port number>/<database name>
+spring.datasource.username=<postgres username>
+spring.datasource.password=<database password>
+
+3. Create table according to following SQL-statement:
+
+
 CREATE TABLE users
 (
     id character varying(100) COLLATE pg_catalog."default" NOT NULL,
